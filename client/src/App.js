@@ -1,10 +1,15 @@
 import React from "react";
+import { Home } from "./pages";
+import { Header, Footer } from "./layout";
+import "./sass-helpers/globals.scss";
 
 const App = () => {
   return (
-    <main className="d-flex justify-content-center align-items-center">
-      Hello World!
-    </main>
+    <>
+      <Header />
+      <Home />
+      <Footer />
+    </>
   );
 };
 

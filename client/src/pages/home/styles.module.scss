@@ -1,0 +1,10 @@
+@use "../../sass-helpers/variables" as *;
+@use "../../sass-helpers/globals";
+@use "../../sass-helpers/mixins";
+@use "../../sass-helpers/placeHolders";
+@use "../../sass-helpers/functions";
+
+.home {
+  @extend %flex-center;
+  color: $main;
+}
