@@ -1,6 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800&display=swap");
 
 /* Start Global Rules */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 *,
 *::before,
 *::after {
@@ -30,7 +36,4 @@ button {
   }
 }
 
-main {
-  min-height: 100vh;
-}
 /* End Global Rules */
