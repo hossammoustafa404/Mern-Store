@@ -1,7 +1,6 @@
 import React from "react";
 import { Home, ProductDetails } from "./pages";
 import { Header, Footer } from "./layout";
-import "./sass-helpers/globals.scss";
 import { Route, Routes } from "react-router-dom";
 
 const App = () => {
