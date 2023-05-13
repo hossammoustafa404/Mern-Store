@@ -1,0 +1,49 @@
+{
+  "products": [
+    {
+      "id": 0,
+      "name": "shoes",
+      "company": "nike",
+      "img": "./imgs/shoes.jpg",
+      "description": "Nice shoes",
+      "rating": 5,
+      "numReviews": 10
+    },
+    {
+      "id": 1,
+      "name": "shoes",
+      "company": "nike",
+      "img": "./imgs/shoes.jpg",
+      "description": "Nice shoes",
+      "rating": 3,
+      "numReviews": 10
+    },
+    {
+      "id": 2,
+      "name": "shoes",
+      "company": "nike",
+      "img": "./imgs/shoes.jpg",
+      "description": "Nice shoes",
+      "rating": 2,
+      "numReviews": 10
+    },
+    {
+      "id": 3,
+      "name": "shoes",
+      "company": "nike",
+      "img": "./imgs/shoes.jpg",
+      "description": "Nice shoes",
+      "rating": 2.5,
+      "numReviews": 10
+    },
+    {
+      "id": 4,
+      "name": "shoes",
+      "company": "nike",
+      "img": "./imgs/shoes.jpg",
+      "description": "Nice shoes",
+      "rating": 1,
+      "numReviews": 10
+    }
+  ]
+}
