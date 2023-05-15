@@ -25,6 +25,15 @@ const ProductSchema = new mongoose.Schema(
     numReviews: {
       type: Number,
     },
+
+    price: {
+      type: Number,
+    },
+
+    inStock: {
+      type: Boolean,
+      default: true,
+    },
   },
   { timestamps: true }
 );

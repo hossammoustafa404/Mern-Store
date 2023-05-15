@@ -1,6 +1,10 @@
+@use "../../../sass-helpers/placeHolders";
+
 .card-body {
   .card-btn {
+    @extend %main-btn;
+    margin-top: 1.5rem;
+    display: block;
     margin-inline: auto;
-    text-transform: capitalize;
   }
 }

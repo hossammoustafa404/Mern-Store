@@ -2,10 +2,10 @@ import React from "react";
 import styles from "./styles.module.scss";
 import { Button, Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Rating from "../rating/Rating";
+import Rating from "../../common/rating/Rating";
 
 const Product = ({
-  id: productId,
+  _id: productId,
   name,
   company,
   img,

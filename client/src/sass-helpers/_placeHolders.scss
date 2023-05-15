@@ -3,3 +3,16 @@
   justify-content: center;
   align-items: center;
 }
+
+%main-btn {
+  background-color: yellow;
+  font-weight: bold;
+  text-transform: capitalize;
+  border: none;
+  color: black;
+  &:hover,
+  &:focus {
+    background-color: yellow !important;
+    color: black !important;
+  }
+}

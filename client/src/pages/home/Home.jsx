@@ -1,7 +1,6 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import styles from "./styles.module.scss";
 import { Content } from "../../layout";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { Product } from "../../components";
 import { Container, Row } from "react-bootstrap";
@@ -51,7 +50,7 @@ const Home = () => {
   let renderedProducts = [];
   if (products.length) {
     renderedProducts = products.map((product) => (
-      <Product key={product.id} {...product} />
+      <Product key={product._id} {...product} />
     ));
   }
 
