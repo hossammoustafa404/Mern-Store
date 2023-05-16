@@ -98,7 +98,7 @@ const ProductDetails = () => {
                   <ListGroupItem>Price: ${product.price}</ListGroupItem>
                   <ListGroupItem>
                     Status:{" "}
-                    {product.inStock ? (
+                    {product.numInStock ? (
                       <Badge bg="success">in stock</Badge>
                     ) : (
                       <Badge bg="danger">out of stock</Badge>

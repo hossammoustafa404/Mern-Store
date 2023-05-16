@@ -50,7 +50,7 @@ const Home = () => {
   let renderedProducts = [];
   if (products.length) {
     renderedProducts = products.map((product) => (
-      <Product key={product._id} {...product} />
+      <Product key={product._id} product={product} />
     ));
   }
 

@@ -10,9 +10,12 @@ const Rating = ({ rating, numReviews }) => {
     <div className={styles.rating}>
       <span>
         {rating >= 1 ? (
-          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} className={styles["star-icon"]} />
         ) : rating >= 0.5 ? (
-          <FontAwesomeIcon icon={faStarHalfStroke} />
+          <FontAwesomeIcon
+            icon={faStarHalfStroke}
+            className={styles["star-icon"]}
+          />
         ) : (
           <FontAwesomeIcon icon={emptyStar} />
         )}
@@ -20,9 +23,12 @@ const Rating = ({ rating, numReviews }) => {
 
       <span>
         {rating >= 2 ? (
-          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} className={styles["star-icon"]} />
         ) : rating >= 1.5 ? (
-          <FontAwesomeIcon icon={faStarHalfStroke} />
+          <FontAwesomeIcon
+            icon={faStarHalfStroke}
+            className={styles["star-icon"]}
+          />
         ) : (
           <FontAwesomeIcon icon={emptyStar} />
         )}
@@ -30,9 +36,12 @@ const Rating = ({ rating, numReviews }) => {
 
       <span>
         {rating >= 3 ? (
-          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} className={styles["star-icon"]} />
         ) : rating >= 2.5 ? (
-          <FontAwesomeIcon icon={faStarHalfStroke} />
+          <FontAwesomeIcon
+            icon={faStarHalfStroke}
+            className={styles["star-icon"]}
+          />
         ) : (
           <FontAwesomeIcon icon={emptyStar} />
         )}
@@ -40,9 +49,12 @@ const Rating = ({ rating, numReviews }) => {
 
       <span>
         {rating >= 4 ? (
-          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} className={styles["star-icon"]} />
         ) : rating >= 3.5 ? (
-          <FontAwesomeIcon icon={faStarHalfStroke} />
+          <FontAwesomeIcon
+            icon={faStarHalfStroke}
+            className={styles["star-icon"]}
+          />
         ) : (
           <FontAwesomeIcon icon={emptyStar} />
         )}
@@ -50,9 +62,12 @@ const Rating = ({ rating, numReviews }) => {
 
       <span>
         {rating >= 5 ? (
-          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} className={styles["star-icon"]} />
         ) : rating >= 4.5 ? (
-          <FontAwesomeIcon icon={faStarHalfStroke} />
+          <FontAwesomeIcon
+            icon={faStarHalfStroke}
+            className={styles["star-icon"]}
+          />
         ) : (
           <FontAwesomeIcon icon={emptyStar} />
         )}

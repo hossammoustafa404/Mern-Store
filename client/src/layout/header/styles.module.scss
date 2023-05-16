@@ -1,3 +1,5 @@
+@use "../../sass-helpers/variables" as *;
+
 .navbar {
   background-color: black;
   .toolbar {
@@ -6,7 +8,7 @@
     display: flex;
     align-items: center;
     .brand {
-      color: yellow;
+      color: $mainColor;
       font-size: 30px;
       font-weight: bold;
     }
@@ -15,7 +17,7 @@
       margin-left: auto;
       position: relative;
       .cart-icon {
-        color: yellow;
+        color: #f6f6f6;
         font-size: 30px;
       }
 
@@ -23,7 +25,6 @@
         position: absolute;
         top: -12px;
         right: -12px;
-        // background-color: transparent !important;
         font-size: 16px;
         font-weight: bold;
         width: 25px;
@@ -33,7 +34,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: blue;
+        background-color: $mainColor !important;
+        color: black;
       }
     }
   }

@@ -1,4 +1,8 @@
+@use "../../../sass-helpers/variables" as *;
 .rating {
+  .star-icon {
+    color: $mainColor;
+  }
   .num {
     margin-left: 0.5rem;
   }

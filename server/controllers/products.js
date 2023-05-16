@@ -22,4 +22,15 @@ const getSingleProduct = async (req, res) => {
   res.status(StatusCodes.OK).json({ product });
 };
 
-module.exports = { createProduct, getAllProducts, getSingleProduct };
+// Delete all products --for testing
+const deleteAllProducts = async (req, res) => {
+  await Product.deleteMany({});
+
+  res.send();
+};
+module.exports = {
+  createProduct,
+  getAllProducts,
+  getSingleProduct,
+  deleteAllProducts,
+};

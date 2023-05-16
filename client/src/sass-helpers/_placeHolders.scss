@@ -1,3 +1,5 @@
+@use "./variables" as *;
+
 %flex-center {
   display: flex;
   justify-content: center;
@@ -5,14 +7,14 @@
 }
 
 %main-btn {
-  background-color: yellow;
+  background-color: $mainColor;
   font-weight: bold;
   text-transform: capitalize;
   border: none;
   color: black;
   &:hover,
   &:focus {
-    background-color: yellow !important;
+    background-color: $mainColor !important;
     color: black !important;
   }
 }

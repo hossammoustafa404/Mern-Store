@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Home, ProductDetails } from "./pages";
+import { Cart, Home, ProductDetails } from "./pages";
 import { Header, Footer } from "./layout";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +19,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products/:productId" element={<ProductDetails />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </>
