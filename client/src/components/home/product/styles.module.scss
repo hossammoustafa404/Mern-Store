@@ -1,6 +1,28 @@
-.card-body {
-  .card-btn {
-    margin-inline: auto;
+@use "../../../sass-helpers/placeHolders";
+
+.card {
+  position: relative;
+  overflow: hidden;
+  .stock-sign {
+    position: absolute;
+    right: 0;
+    width: 8rem;
+    height: 1.5rem;
+    transform: translate(3rem, -1.5rem) rotate(45deg);
+    transform-origin: left;
+
+    text-align: center;
     text-transform: capitalize;
+    font-size: 0.9rem;
+    color: white;
+    font-weight: bold;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .card-btn {
+      @extend %main-btn;
+    }
   }
 }

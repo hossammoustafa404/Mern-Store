@@ -1,0 +1,42 @@
+@use "../../sass-helpers/variables" as *;
+
+.navbar {
+  background-color: black;
+  .toolbar {
+    width: 100%;
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    .brand {
+      color: $mainColor;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .cart-link {
+      margin-left: auto;
+      position: relative;
+      .cart-icon {
+        color: #f6f6f6;
+        font-size: 30px;
+      }
+
+      .cart-badge {
+        position: absolute;
+        top: -12px;
+        right: -12px;
+        font-size: 16px;
+        font-weight: bold;
+        width: 25px;
+        height: 25px;
+        padding: 10px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $mainColor !important;
+        color: black;
+      }
+    }
+  }
+}

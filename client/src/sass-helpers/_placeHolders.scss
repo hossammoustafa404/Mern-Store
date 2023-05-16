@@ -1,5 +1,20 @@
+@use "./variables" as *;
+
 %flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+%main-btn {
+  background-color: $mainColor;
+  font-weight: bold;
+  text-transform: capitalize;
+  border: none;
+  color: black;
+  &:hover,
+  &:focus {
+    background-color: $mainColor !important;
+    color: black !important;
+  }
 }
