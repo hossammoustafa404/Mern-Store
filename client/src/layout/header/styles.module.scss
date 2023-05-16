@@ -1,0 +1,40 @@
+.navbar {
+  background-color: black;
+  .toolbar {
+    width: 100%;
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    .brand {
+      color: yellow;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .cart-link {
+      margin-left: auto;
+      position: relative;
+      .cart-icon {
+        color: yellow;
+        font-size: 30px;
+      }
+
+      .cart-badge {
+        position: absolute;
+        top: -12px;
+        right: -12px;
+        // background-color: transparent !important;
+        font-size: 16px;
+        font-weight: bold;
+        width: 25px;
+        height: 25px;
+        padding: 10px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: blue;
+      }
+    }
+  }
+}

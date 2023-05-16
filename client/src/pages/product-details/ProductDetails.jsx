@@ -13,6 +13,8 @@ import {
   Row,
 } from "react-bootstrap";
 import { Rating } from "../../components";
+import { addToCart } from "../../features/cart/cartSlice";
+import { useDispatch } from "react-redux";
 
 const initialState = {
   product: {},
@@ -35,12 +37,16 @@ const productReducer = (state, action) => {
       return state;
   }
 };
+
+// Component
 const ProductDetails = () => {
   const { productId } = useParams();
   const [{ product, error, loading }, dispatch] = useReducer(
     productReducer,
     initialState
   );
+
+  const reduxDispatch = useDispatch();
 
   useEffect(() => {
     const fetchSingleProduct = async () => {
@@ -99,7 +105,12 @@ const ProductDetails = () => {
                     )}
                   </ListGroupItem>
                   <ListGroupItem className="text-center">
-                    <Button className={styles["add-btn"]}>add to cart</Button>
+                    <Button
+                      className={styles["add-btn"]}
+                      onClick={() => reduxDispatch(addToCart(product))}
+                    >
+                      add to cart
+                    </Button>
                   </ListGroupItem>
                 </ListGroup>
               </Col>

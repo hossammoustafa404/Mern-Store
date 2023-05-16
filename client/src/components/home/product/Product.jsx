@@ -3,6 +3,8 @@ import styles from "./styles.module.scss";
 import { Button, Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Rating from "../../common/rating/Rating";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../features/cart/cartSlice";
 
 const Product = ({
   _id: productId,
@@ -13,6 +15,16 @@ const Product = ({
   rating,
   numReviews,
 }) => {
+  const product = {
+    productId,
+    name,
+    company,
+    img,
+    description,
+    rating,
+    numReviews,
+  };
+  const dispatch = useDispatch();
   return (
     <Col xs={12} sm={6} md={4} lg={3} className="gy-4">
       <Card className={styles.card}>
@@ -28,6 +40,7 @@ const Product = ({
             type="button"
             variant="primary"
             className={styles["card-btn"]}
+            onClick={() => dispatch(addToCart(product))}
           >
             add to cart
           </Button>
