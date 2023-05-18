@@ -120,7 +120,7 @@ const Cart = () => {
               <ListGroupItem>Total price: ${totalPrice}</ListGroupItem>
               <ListGroupItem>
                 <Button
-                  onClick={() => navigate("/signin")}
+                  onClick={() => navigate("/signin?redirect=shipping")}
                   className={styles["order-btn"]}
                   disabled={!totalAmount}
                 >

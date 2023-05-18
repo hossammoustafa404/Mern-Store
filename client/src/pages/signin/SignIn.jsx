@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./styles.module.scss";
 import { Content } from "../../layout";
 import {
@@ -11,17 +11,47 @@ import {
   FormLabel,
 } from "react-bootstrap";
 
-import { ErrorMessage, useFormik } from "formik";
+import { useFormik } from "formik";
+import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { userSign } from "../../features/user/userSlice";
 
 const SignIn = () => {
+  const { search } = useLocation();
+  const redirect = new URLSearchParams(search).get("redirect") || "/";
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.user);
+  useEffect(() => {
+    if (token) {
+      navigate(redirect);
+    }
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       username: "",
       password: "",
+      remember: false,
     },
 
-    onSubmit: (values) => {
-      console.log({ values });
+    onSubmit: async (values) => {
+      try {
+        const {
+          data: {
+            token,
+            user: { firstName },
+          },
+        } = await axios.get("/api/v1/auth", {
+          params: { username: values.username, password: values.password },
+        });
+        dispatch(userSign({ token, firstName, remember: values.remember }));
+        navigate(redirect);
+      } catch (error) {
+        console.log(error);
+      }
     },
 
     validate: (values) => {
@@ -78,6 +108,8 @@ const SignIn = () => {
               id="remember"
               name="remember"
               label="Remember me"
+              value={formik.values.remember}
+              onChange={formik.handleChange}
             />
           </FormGroup>
           <Button type="submit" className={styles["submit-btn"]}>

@@ -13,7 +13,7 @@ const register = async (req, res) => {
 
 // Login
 const login = async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password } = req.query;
 
   //   if(!username||!password) {
 

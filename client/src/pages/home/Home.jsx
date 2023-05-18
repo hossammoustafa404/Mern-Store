@@ -37,7 +37,7 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios("/api/v1/products");
+        const { data } = await axios.get("/api/v1/products");
         dispatch({ type: PRODUCTS_FETCHED, payload: data.products });
       } catch (error) {
         dispatch({ type: FETCH_ERROR, payload: error });
