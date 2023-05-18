@@ -1,0 +1,27 @@
+@use "../../sass-helpers//placeHolders";
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 30rem;
+  margin-inline: auto;
+
+  label:not(:last-child) {
+    font-weight: bold;
+  }
+
+  input {
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .error-msg {
+    color: red;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  .submit-btn {
+    @extend %main-btn;
+  }
+}

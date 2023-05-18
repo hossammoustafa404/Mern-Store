@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { Button, Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Rating from "../../common/rating/Rating";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../../features/cart/cartSlice";
+import { addToCart, removeCartProduct } from "../../../features/cart/cartSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 
 const Product = ({ product }) => {
   const {
@@ -18,6 +20,9 @@ const Product = ({ product }) => {
     price,
     numInStock,
   } = product;
+
+  const { items } = useSelector((state) => state.cart);
+  const cartProduct = items[productId];
 
   const dispatch = useDispatch();
   return (
@@ -43,10 +48,19 @@ const Product = ({ product }) => {
           <Button
             type="button"
             variant="primary"
-            className={styles["card-btn"]}
-            onClick={() => dispatch(addToCart(product))}
+            className={`${styles["card-btn"]} ${
+              cartProduct ? styles["remove"] : styles["add"]
+            }`}
+            onClick={() => {
+              if (cartProduct) {
+                dispatch(removeCartProduct({ productId }));
+              } else {
+                dispatch(addToCart(product));
+              }
+            }}
+            disabled={!numInStock && true}
           >
-            add to cart
+            {cartProduct ? "remove from cart" : "add to cart"}
           </Button>
           <span>${price}</span>
         </Card.Footer>

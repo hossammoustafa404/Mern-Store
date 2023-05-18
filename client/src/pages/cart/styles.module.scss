@@ -1,3 +1,32 @@
+@use "../../sass-helpers//placeHolders";
+
 .product-img {
   max-width: 5rem;
+}
+
+.num-btn {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+
+  @extend %flex-center;
+
+  background-color: black;
+  color: white;
+  border: none;
+  &:hover,
+  &:focus {
+    background-color: black;
+    color: white;
+  }
+}
+
+.del-btn {
+  @extend %delete-btn;
+}
+
+.order-btn {
+  @extend %main-btn;
+  display: block;
+  width: 100%;
 }

@@ -22,7 +22,12 @@
     align-items: center;
     justify-content: space-between;
     .card-btn {
-      @extend %main-btn;
+      &.add {
+        @extend %main-btn;
+      }
+      &.remove {
+        @extend %delete-btn;
+      }
     }
   }
 }

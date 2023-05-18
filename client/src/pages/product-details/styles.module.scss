@@ -1,6 +1,11 @@
 @use "../../sass-helpers/placeHolders";
 
-.add-btn {
-  @extend %main-btn;
-  margin-inline: auto;
+.btn {
+  width: 100%;
+  &.add {
+    @extend %main-btn;
+  }
+  &.remove {
+    @extend %delete-btn;
+  }
 }

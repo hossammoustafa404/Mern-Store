@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import { Content } from "../../layout";
 import {
@@ -15,14 +15,17 @@ import {
   increaseCartProduct,
   decreaseCartProduct,
   removeCartProduct,
+  setProductAmount,
 } from "../../features/cart/cartSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { items, amount, totalAmount, totalPrice } = useSelector(
     (state) => state.cart
   );
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const renderedRows = Object.values(items).map((item, index) => (
     <tr key={item._id}>
@@ -30,24 +33,53 @@ const Cart = () => {
       <td>
         <img src={item.img} alt={item.name} className={styles["product-img"]} />
       </td>
-      <td>{item.name}</td>
-      <td>{item.price}</td>
       <td>
-        <Button
-          onClick={() => dispatch(decreaseCartProduct({ productId: item._id }))}
-        >
-          -
-        </Button>
-        <span>{item.amount}</span>
-        <Button
-          onClick={() => dispatch(increaseCartProduct({ productId: item._id }))}
-        >
-          +
-        </Button>
+        <Link to={`/products/${item._id}`} className="text-primary">
+          {item.name}
+        </Link>
+      </td>
+      <td>${item.price}</td>
+      <td>
+        <div className="d-flex gap-2 align-items-center">
+          <Button
+            onClick={() =>
+              dispatch(decreaseCartProduct({ productId: item._id }))
+            }
+            className={styles["num-btn"]}
+          >
+            -
+          </Button>
+          {/* <span>{item.amount}</span> */}
+          <input
+            type="text"
+            id="amount"
+            className="w-25"
+            value={item.amount}
+            onChange={(e) =>
+              dispatch(
+                setProductAmount({ productId: item._id, value: e.target.value })
+              )
+            }
+            onBlur={(e) => {
+              if (e.target.value == 0) {
+                dispatch(removeCartProduct({ productId: item._id }));
+              }
+            }}
+          />
+          <Button
+            onClick={() =>
+              dispatch(increaseCartProduct({ productId: item._id }))
+            }
+            className={styles["num-btn"]}
+          >
+            +
+          </Button>
+        </div>
       </td>
       <td>
         <Button
           onClick={() => dispatch(removeCartProduct({ productId: item._id }))}
+          className={styles["del-btn"]}
         >
           delete
         </Button>
@@ -87,7 +119,12 @@ const Cart = () => {
               <ListGroupItem>Total products: {totalAmount}</ListGroupItem>
               <ListGroupItem>Total price: ${totalPrice}</ListGroupItem>
               <ListGroupItem>
-                <Button>order</Button>
+                <Button
+                  onClick={() => navigate("/signin")}
+                  className={styles["order-btn"]}
+                >
+                  order
+                </Button>
               </ListGroupItem>
             </ListGroup>
           </Col>

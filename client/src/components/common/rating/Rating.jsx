@@ -73,7 +73,7 @@ const Rating = ({ rating, numReviews }) => {
         )}
       </span>
 
-      <span className={styles.num}>{numReviews} Reviews</span>
+      <span className={styles.num}>({numReviews} Reviews)</span>
     </div>
   );
 };

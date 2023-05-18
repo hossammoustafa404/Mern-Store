@@ -12,7 +12,9 @@ const Header = () => {
     <Navbar className={styles["navbar"]}>
       <Container>
         <div className={styles["toolbar"]}>
-          <NavbarBrand className={styles["brand"]}>amazon</NavbarBrand>
+          <Link to="/">
+            <NavbarBrand className={styles["brand"]}>amazon</NavbarBrand>
+          </Link>
           <Link to="/cart" className={styles["cart-link"]}>
             <FontAwesomeIcon
               icon={faCartShopping}

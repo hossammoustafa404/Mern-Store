@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Cart, Home, ProductDetails } from "./pages";
+import { Cart, Home, ProductDetails, SignIn } from "./pages";
 import { Header, Footer } from "./layout";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(calculateCartTotals());
+    localStorage.setItem("cart", JSON.stringify(items));
   }, [items]);
 
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/products/:productId" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/signin" element={<SignIn />} />
       </Routes>
       <Footer />
     </>

@@ -13,8 +13,8 @@ import {
   Row,
 } from "react-bootstrap";
 import { Rating } from "../../components";
-import { addToCart } from "../../features/cart/cartSlice";
-import { useDispatch } from "react-redux";
+import { addToCart, removeCartProduct } from "../../features/cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const initialState = {
   product: {},
@@ -45,14 +45,14 @@ const ProductDetails = () => {
     productReducer,
     initialState
   );
-
+  const { items } = useSelector((state) => state.cart);
+  const cartProduct = items[product._id];
   const reduxDispatch = useDispatch();
 
   useEffect(() => {
     const fetchSingleProduct = async () => {
       try {
         const { data } = await axios(`/api/v1/products/${productId}`);
-        console.log(data);
         dispatch({ type: PRODUCT_FETCHED, payload: data.product });
       } catch (error) {
         dispatch({ type: FETCH_ERROR, payload: error });
@@ -62,6 +62,7 @@ const ProductDetails = () => {
     fetchSingleProduct();
   }, []);
 
+  console.log(product);
   return (
     <Content>
       <section>
@@ -106,10 +107,20 @@ const ProductDetails = () => {
                   </ListGroupItem>
                   <ListGroupItem className="text-center">
                     <Button
-                      className={styles["add-btn"]}
-                      onClick={() => reduxDispatch(addToCart(product))}
+                      className={`${styles["btn"]} ${
+                        cartProduct ? styles["remove"] : styles["add"]
+                      }`}
+                      onClick={() => {
+                        if (cartProduct) {
+                          reduxDispatch(
+                            removeCartProduct({ productId: product._id })
+                          );
+                        } else {
+                          reduxDispatch(addToCart(product));
+                        }
+                      }}
                     >
-                      add to cart
+                      {cartProduct ? "Remove from cart" : "add to cart"}
                     </Button>
                   </ListGroupItem>
                 </ListGroup>

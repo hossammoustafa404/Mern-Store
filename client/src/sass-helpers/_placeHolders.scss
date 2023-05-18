@@ -18,3 +18,14 @@
     color: black !important;
   }
 }
+
+%delete-btn {
+  @extend %main-btn;
+  background-color: red;
+  color: white;
+  &:hover,
+  &:focus {
+    background-color: red !important;
+    color: white !important;
+  }
+}
