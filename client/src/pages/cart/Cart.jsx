@@ -89,7 +89,7 @@ const Cart = () => {
   return (
     <Content>
       <Container>
-        <Row className="gx-5">
+        <Row className="gx-5 gy-4">
           <Col xs={12} lg={8}>
             {amount ? (
               <Table>
@@ -122,6 +122,7 @@ const Cart = () => {
                 <Button
                   onClick={() => navigate("/signin")}
                   className={styles["order-btn"]}
+                  disabled={!totalAmount}
                 >
                   order
                 </Button>
