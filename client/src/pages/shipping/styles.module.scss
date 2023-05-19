@@ -1,4 +1,7 @@
 @use "../../sass-helpers//placeHolders";
-.form {
+form {
   @extend %form;
+  label {
+    text-transform: capitalize;
+  }
 }

@@ -11,11 +11,13 @@ import {
   FormLabel,
 } from "react-bootstrap";
 
-import { useFormik } from "formik";
+import { replace, useFormik } from "formik";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userSign } from "../../features/user/userSlice";
+import { Helmet } from "react-helmet-async";
+import { OrderSteps } from "../../components";
 
 const SignIn = () => {
   const { search } = useLocation();
@@ -26,7 +28,7 @@ const SignIn = () => {
   const { token } = useSelector((state) => state.user);
   useEffect(() => {
     if (token) {
-      navigate(redirect);
+      navigate(`/${redirect}`, { replace: true });
     }
   }, []);
 
@@ -40,15 +42,12 @@ const SignIn = () => {
     onSubmit: async (values) => {
       try {
         const {
-          data: {
-            token,
-            user: { firstName },
-          },
+          data: { token, info },
         } = await axios.get("/api/v1/auth", {
           params: { username: values.username, password: values.password },
         });
-        dispatch(userSign({ token, firstName, remember: values.remember }));
-        navigate(redirect);
+        dispatch(userSign({ token, info, rememberMe: values.remember }));
+        navigate(`/${redirect}`, { replace: true });
       } catch (error) {
         console.log(error);
       }
@@ -72,7 +71,11 @@ const SignIn = () => {
   });
   return (
     <Content>
+      <Helmet>
+        <title>Sign in</title>
+      </Helmet>
       <Container>
+        {redirect === "shipping" && <OrderSteps step1 />}
         <Form className={styles["form"]} onSubmit={formik.handleSubmit}>
           <FormGroup>
             <FormLabel htmlFor="username">Username</FormLabel>

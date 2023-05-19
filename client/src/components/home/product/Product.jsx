@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeCartProduct } from "../../../features/cart/cartSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 
 const Product = ({ product }) => {
   const {
@@ -50,12 +51,14 @@ const Product = ({ product }) => {
             variant="primary"
             className={`${styles["card-btn"]} ${
               cartProduct ? styles["remove"] : styles["add"]
-            }`}
+            } ${!numInStock ? "bg-secondary text-white" : ""}`}
             onClick={() => {
               if (cartProduct) {
                 dispatch(removeCartProduct({ productId }));
+                toast.error(`${name} has been removed from card.`);
               } else {
                 dispatch(addToCart(product));
+                toast.success(`${name} has been added to card.`);
               }
             }}
             disabled={!numInStock && true}

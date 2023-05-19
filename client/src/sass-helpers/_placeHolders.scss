@@ -29,3 +29,30 @@
     color: white !important;
   }
 }
+
+%form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 30rem;
+  margin-inline: auto;
+
+  label {
+    font-weight: bold;
+  }
+
+  input {
+    &:focus {
+      box-shadow: none !important;
+    }
+  }
+
+  .error-msg {
+    color: red;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  .submit-btn {
+    @extend %main-btn;
+  }
+}

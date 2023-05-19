@@ -18,6 +18,7 @@ import {
   setProductAmount,
 } from "../../features/cart/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Cart = () => {
   const { items, amount, totalAmount, totalPrice } = useSelector(
@@ -88,6 +89,9 @@ const Cart = () => {
   ));
   return (
     <Content>
+      <Helmet>
+        <title>Cart</title>
+      </Helmet>
       <Container>
         <Row className="gx-5 gy-4">
           <Col xs={12} lg={8}>
@@ -121,7 +125,9 @@ const Cart = () => {
               <ListGroupItem>
                 <Button
                   onClick={() => navigate("/signin?redirect=shipping")}
-                  className={styles["order-btn"]}
+                  className={`${styles["order-btn"]} ${
+                    !totalAmount ? "bg-secondary" : ""
+                  }`}
                   disabled={!totalAmount}
                 >
                   order

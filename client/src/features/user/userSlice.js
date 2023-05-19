@@ -5,13 +5,10 @@ const initialState = {
     JSON.parse(localStorage.getItem("user"))?.token ||
     JSON.parse(sessionStorage.getItem("user"))?.token ||
     "",
-  info: {
-    firstName:
-      JSON.parse(localStorage.getItem("user"))?.firstName ||
-      JSON.parse(sessionStorage.getItem("user"))?.firstName ||
-      "",
-  },
-  remember: false,
+  info:
+    JSON.parse(localStorage.getItem("user"))?.info ||
+    JSON.parse(sessionStorage.getItem("user"))?.info ||
+    {},
 };
 
 const cartSlice = createSlice({
@@ -19,28 +16,24 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     userSign: (state, { payload }) => {
-      const { token, firstName, remember } = payload;
+      const { token, info, rememberMe } = payload;
       state.token = token;
-      state.info.firstName = firstName;
-      if (remember) {
-        localStorage.setItem("user", JSON.stringify({ token, firstName }));
-        state.remember = true;
+      state.info = info;
+      if (rememberMe) {
+        localStorage.setItem("user", JSON.stringify({ token, info }));
       } else {
-        sessionStorage.setItem("user", JSON.stringify({ token, firstName }));
-        state.remember = false;
+        sessionStorage.setItem("user", JSON.stringify({ token, info }));
       }
+
+      console.log(state.remember);
     },
 
     userLogout: (state) => {
       state.token = "";
-      state.info.firstName = "";
+      state.info = {};
       console.log(state.remember);
-      if (state.remember) {
-        localStorage.removeItem("user");
-      } else {
-        sessionStorage.removeItem("user");
-      }
-      state.remember = false;
+      localStorage.removeItem("user");
+      sessionStorage.removeItem("user");
     },
   },
 });

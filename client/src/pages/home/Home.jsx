@@ -4,6 +4,7 @@ import { Content } from "../../layout";
 import axios from "axios";
 import { Product } from "../../components";
 import { Container, Row } from "react-bootstrap";
+import { Helmet } from "react-helmet-async";
 
 const initialState = {
   products: [],
@@ -56,6 +57,9 @@ const Home = () => {
 
   return (
     <Content className={styles.home}>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <section>
         <Container>
           <h2 className={styles.title}>featured</h2>

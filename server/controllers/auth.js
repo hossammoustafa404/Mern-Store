@@ -31,9 +31,10 @@ const login = async (req, res) => {
   //   }
 
   const token = user.createToken();
-  res
-    .status(StatusCodes.OK)
-    .json({ token, user: { firstName: user.firstName } });
+  res.status(StatusCodes.OK).json({
+    token,
+    info: { firstName: user.firstName, isAdmin: user.isAdmin },
+  });
 };
 
 module.exports = { register, login };

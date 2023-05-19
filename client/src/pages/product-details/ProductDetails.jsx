@@ -15,6 +15,7 @@ import {
 import { Rating } from "../../components";
 import { addToCart, removeCartProduct } from "../../features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { Helmet } from "react-helmet-async";
 
 const initialState = {
   product: {},
@@ -65,6 +66,9 @@ const ProductDetails = () => {
   console.log(product);
   return (
     <Content>
+      <Helmet>
+        <title>{product.name}</title>
+      </Helmet>
       <section>
         <Container>
           {loading ? (
